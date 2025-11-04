@@ -7,9 +7,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <audio id="bg-music" loop autoplay>
+    <source src="ambient.mp3" type="audio/mpeg" />
+  </audio>
+
   <div class="scene">
     <div class="container">
-      <img src="7dd54a38-70fe-4014-ab65-ccd47ae70db4.png" alt="Web Summit Logo" class="logo" />
+      <button id="mute-btn">🔊 Mute</button>
       <h1 class="title">Web Summit 2025</h1>
       <h2 class="subtitle">Countdown to the event</h2>
       <div class="countdown">
@@ -32,6 +36,7 @@
       </div>
     </div>
   </div>
+
   <script src="script.js"></script>
 </body>
 </html>
