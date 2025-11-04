@@ -2,20 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Web Summit 2025 Countdown</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Audio player (starts after user click) -->
+  <!-- audio: parte dopo primo tap/click -->
   <audio id="bg-music" loop>
     <source src="ambient.mp3" type="audio/mpeg" />
   </audio>
 
+  <!-- sfondo triangoli -->
+  <canvas id="triangles" aria-hidden="true"></canvas>
+
+  <!-- wrapper con prospettiva per effetto 3D -->
   <div class="scene">
-    <div class="container">
+    <div class="container" id="card">
       <h1 class="title">Web Summit 2025</h1>
       <h2 class="subtitle">Countdown to the event</h2>
+
       <div class="countdown">
         <div class="block">
           <div class="time" id="days">00</div>
@@ -37,7 +42,10 @@
     </div>
   </div>
 
-  <!-- Footer with mute button -->
+  <!-- overlay per avvio audio -->
+  <div id="overlay"><p>▶ Tap or click to start</p></div>
+
+  <!-- footer con mute -->
   <footer>
     <button id="mute-btn">🔊 Mute</button>
   </footer>
