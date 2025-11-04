@@ -13,15 +13,16 @@ body {
   font-family: 'Poppins', sans-serif;
   color: var(--white);
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
   perspective: 1000px;
 
   /* Animated gradient background */
   background: linear-gradient(-45deg, var(--dark-navy), #13144a, var(--teal), var(--magenta));
   background-size: 400% 400%;
-  animation: gradientMove 12s ease infinite;
+  animation: gradientMove 15s ease infinite;
 }
 
 @keyframes gradientMove {
@@ -41,10 +42,9 @@ body {
   padding: 50px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 50px rgba(214, 58, 138, 0.15);
   transition: transform 0.3s ease;
   transform-style: preserve-3d;
-  position: relative;
   animation: fadeIn3D 1.5s ease-out forwards;
   opacity: 0;
 }
@@ -58,24 +58,6 @@ body {
     transform: translateY(0) scale(1) rotateX(0);
     opacity: 1;
   }
-}
-
-#mute-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: var(--white);
-  font-weight: bold;
-  border-radius: 8px;
-  padding: 8px 14px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-#mute-btn:hover {
-  background: rgba(255, 255, 255, 0.25);
 }
 
 .title {
@@ -136,11 +118,37 @@ body {
 
 .time:hover {
   transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 0 30px rgba(62, 183, 173, 0.5);
+  box-shadow: 0 0 30px rgba(214, 58, 138, 0.6);
 }
 
 .label {
   font-size: 1rem;
   color: var(--teal);
   margin-top: 5px;
+}
+
+/* Footer */
+footer {
+  margin-top: 40px;
+  position: absolute;
+  bottom: 20px;
+  text-align: center;
+}
+
+#mute-btn {
+  background: var(--magenta);
+  border: none;
+  color: var(--white);
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(214, 58, 138, 0.5);
+  transition: all 0.3s ease;
+}
+
+#mute-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 0 30px rgba(50, 179, 173, 0.8);
+  background: var(--teal);
 }
