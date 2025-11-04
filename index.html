@@ -7,13 +7,13 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <audio id="bg-music" loop autoplay>
+  <!-- Audio player (starts after user click) -->
+  <audio id="bg-music" loop>
     <source src="ambient.mp3" type="audio/mpeg" />
   </audio>
 
   <div class="scene">
     <div class="container">
-      <button id="mute-btn">🔊 Mute</button>
       <h1 class="title">Web Summit 2025</h1>
       <h2 class="subtitle">Countdown to the event</h2>
       <div class="countdown">
@@ -36,6 +36,11 @@
       </div>
     </div>
   </div>
+
+  <!-- Footer with mute button -->
+  <footer>
+    <button id="mute-btn">🔊 Mute</button>
+  </footer>
 
   <script src="script.js"></script>
 </body>
