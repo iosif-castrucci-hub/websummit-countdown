@@ -1,16 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+:root {
+  --dark-navy: #0b0c28;
+  --teal: #32b3ad;
+  --magenta: #d63a8a;
+  --white: #ffffff;
+}
 
 body {
   margin: 0;
   height: 100vh;
-  background: radial-gradient(circle at top, #0b0b2a, #09091a 80%);
+  font-family: 'Poppins', sans-serif;
+  color: var(--white);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-family: 'Montserrat', sans-serif;
-  color: white;
   overflow: hidden;
   perspective: 1000px;
+
+  /* Animated gradient background */
+  background: linear-gradient(-45deg, var(--dark-navy), #13144a, var(--teal), var(--magenta));
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .scene {
@@ -24,29 +41,54 @@ body {
   padding: 50px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease;
   transform-style: preserve-3d;
+  position: relative;
+  animation: fadeIn3D 1.5s ease-out forwards;
+  opacity: 0;
 }
 
-.logo {
-  width: 180px;
-  filter: drop-shadow(0 0 12px rgba(255,255,255,0.2));
-  margin-bottom: 20px;
-  transform: translateZ(40px);
+@keyframes fadeIn3D {
+  from {
+    transform: translateY(50px) scale(0.9) rotateX(15deg);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1) rotateX(0);
+    opacity: 1;
+  }
+}
+
+#mute-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+#mute-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
 }
 
 .title {
-  font-size: 2.5rem;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  transform: translateZ(30px);
+  font-size: 2.8rem;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.5);
+  color: var(--white);
+  margin-bottom: 10px;
 }
 
 .subtitle {
-  color: #8ee3f5;
-  font-size: 1.2rem;
+  color: var(--teal);
+  font-size: 1.3rem;
   margin-bottom: 40px;
-  transform: translateZ(25px);
 }
 
 .countdown {
@@ -59,27 +101,46 @@ body {
 
 .block {
   text-align: center;
+  animation: fadeUp 2s ease forwards;
+  opacity: 0;
+}
+
+.block:nth-child(1) { animation-delay: 0.3s; }
+.block:nth-child(2) { animation-delay: 0.5s; }
+.block:nth-child(3) { animation-delay: 0.7s; }
+.block:nth-child(4) { animation-delay: 0.9s; }
+
+@keyframes fadeUp {
+  from {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .time {
   background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
+  border: 2px solid var(--magenta);
   border-radius: 15px;
-  box-shadow: 0 0 20px rgba(255,255,255,0.05);
+  box-shadow: 0 0 25px rgba(214, 58, 138, 0.3);
   padding: 25px;
   font-size: 2.5rem;
   font-weight: bold;
   min-width: 110px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: var(--white);
 }
 
 .time:hover {
   transform: translateY(-10px) scale(1.05);
-  box-shadow: 0 0 20px rgba(255,255,255,0.2);
+  box-shadow: 0 0 30px rgba(62, 183, 173, 0.5);
 }
 
 .label {
   font-size: 1rem;
-  color: #a9a9ff;
+  color: var(--teal);
   margin-top: 5px;
 }
