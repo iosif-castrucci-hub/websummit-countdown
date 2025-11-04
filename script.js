@@ -28,14 +28,22 @@ document.addEventListener("mousemove", (e) => {
   const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
   container.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
 });
-
 document.addEventListener("mouseleave", () => {
   container.style.transform = "rotateY(0deg) rotateX(0deg)";
 });
 
-// Music control
+// Music control (starts on first user click)
 const music = document.getElementById("bg-music");
 const muteBtn = document.getElementById("mute-btn");
+
+let musicStarted = false;
+
+document.addEventListener("click", () => {
+  if (!musicStarted) {
+    music.play().catch(() => {});
+    musicStarted = true;
+  }
+});
 
 muteBtn.addEventListener("click", () => {
   if (music.muted) {
