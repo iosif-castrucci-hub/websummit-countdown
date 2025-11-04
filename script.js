@@ -32,3 +32,17 @@ document.addEventListener("mousemove", (e) => {
 document.addEventListener("mouseleave", () => {
   container.style.transform = "rotateY(0deg) rotateX(0deg)";
 });
+
+// Music control
+const music = document.getElementById("bg-music");
+const muteBtn = document.getElementById("mute-btn");
+
+muteBtn.addEventListener("click", () => {
+  if (music.muted) {
+    music.muted = false;
+    muteBtn.textContent = "🔊 Mute";
+  } else {
+    music.muted = true;
+    muteBtn.textContent = "🔇 Unmute";
+  }
+});
