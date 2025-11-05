@@ -91,3 +91,35 @@ footer{ position:fixed; bottom:22px; left:0; right:0; z-index:2; text-align:cent
   cursor:pointer; transition:transform .2s, background .2s, box-shadow .2s;
 }
 #mute-btn:hover{ transform:translateY(-3px); background:var(--teal); box-shadow:0 0 28px rgba(50,179,173,.7) }
+
+/* --- Nuovo bottone portfolio --- */
+#portfolio-btn {
+  display: block;
+  margin: 0 auto 12px auto;
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(50, 179, 173, 0.5);
+  transition: all 0.3s ease;
+}
+
+#portfolio-btn:hover {
+  background: var(--magenta);
+  box-shadow: 0 0 30px rgba(214, 58, 138, 0.7);
+  transform: translateY(-3px);
+}
+
+/* --- Aggiusta posizione Mute su mobile --- */
+@media (max-width: 600px) {
+  footer {
+    bottom: 10px; /* più in basso su schermi piccoli */
+  }
+  #mute-btn {
+    padding: 12px 24px;
+  }
+}
+
