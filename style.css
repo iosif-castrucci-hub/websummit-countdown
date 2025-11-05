@@ -193,3 +193,85 @@ footer {
     gap: 12px;
   }
 }
+
+/* ===== Footer Cross-Browser Stable Fix ===== */
+footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding-bottom: 40px; /* margine visivo dal bordo reale */
+  background: linear-gradient(to top, rgba(11, 12, 40, 0.9) 0%, transparent 90%);
+  backdrop-filter: blur(8px);
+  animation: footerFade 1.5s ease forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes footerFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bottoni nel footer */
+#portfolio-btn,
+#mute-btn {
+  transform: translateZ(40px);
+}
+
+#portfolio-btn {
+  background: var(--teal);
+  color: var(--white);
+  border: none;
+  padding: 10px 24px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 0 20px rgba(50, 179, 173, 0.5);
+  transition: all 0.3s ease;
+}
+
+#portfolio-btn:hover {
+  background: var(--magenta);
+  box-shadow: 0 0 30px rgba(214, 58, 138, 0.7);
+  transform: translateY(-3px);
+}
+
+#mute-btn {
+  background: var(--magenta);
+  color: var(--white);
+  border: 0;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 0 20px rgba(214, 58, 138, 0.5);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+#mute-btn:hover {
+  transform: translateY(-3px);
+  background: var(--teal);
+  box-shadow: 0 0 28px rgba(50, 179, 173, 0.7);
+}
+
+/* Mobile fix */
+@media (max-width: 600px) {
+  footer {
+    padding-bottom: 70px; /* extra margine per iOS Safari */
+    gap: 14px;
+  }
+}
+
