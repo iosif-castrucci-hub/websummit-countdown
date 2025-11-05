@@ -158,3 +158,38 @@ footer {
   }
 }
 
+/* --- Footer Cross-Browser Fix + Fade-in Animation --- */
+footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(env(safe-area-inset-bottom) + 50px); /* gestisce iPhone notch e Firefox */
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px; /* più spazio tra i due bottoni */
+  opacity: 0;
+  animation: footerFade 1.5s ease forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes footerFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Extra spazio su mobile */
+@media (max-width: 600px) {
+  footer {
+    bottom: calc(env(safe-area-inset-bottom) + 30px);
+    gap: 12px;
+  }
+}
