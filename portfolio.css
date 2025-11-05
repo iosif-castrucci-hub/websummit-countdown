@@ -7,24 +7,48 @@
   --white: #fff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
+/* ===== Background Gradient + Tech Grid ===== */
 body {
-  background: var(--dark-navy);
+  background: radial-gradient(circle at top left, #111433, #07091f 60%);
   color: var(--white);
   font-family: 'Poppins', sans-serif;
   overflow-x: hidden;
   min-height: 100vh;
+  position: relative;
 }
 
-/* === Navbar === */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: gridMove 40s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridMove {
+  from { background-position: 0 0, 0 0; }
+  to { background-position: 80px 80px, 80px 80px; }
+}
+
+/* ===== Navbar ===== */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 60px;
-  background: rgba(11,12,40,0.8);
+  background: rgba(11, 12, 40, 0.8);
   backdrop-filter: blur(8px);
   display: flex;
   justify-content: space-between;
@@ -56,18 +80,7 @@ body {
   transform: translateY(-2px);
 }
 
-/* === Background Canvas === */
-#bgCanvas {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  background: radial-gradient(circle at 20% 20%, rgba(50,179,173,0.1), transparent 70%),
-              radial-gradient(circle at 80% 80%, rgba(214,58,138,0.1), transparent 70%);
-}
-
-/* === Header Section === */
+/* ===== Header Section ===== */
 .header {
   text-align: center;
   padding: 100px 20px 30px;
@@ -89,7 +102,7 @@ body {
   margin: 10px auto 0;
 }
 
-/* === Cards Grid === */
+/* ===== Grid of Cards ===== */
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -100,16 +113,21 @@ body {
   margin-top: 30px;
 }
 
-/* Neon Cards */
+/* ===== Neon Cards ===== */
 .card {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.05);
   border-radius: 20px;
   padding: 28px;
-  border: 2px solid transparent;
-  box-shadow: 0 0 20px rgba(50,179,173,0.3);
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s ease;
   overflow: hidden;
+  box-shadow: 0 0 25px rgba(50,179,173,0.2);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 35px rgba(214,58,138,0.4);
 }
 
 .card::before {
@@ -117,30 +135,37 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 20px;
-  padding: 2px;
-  background: linear-gradient(45deg, var(--teal), var(--magenta), var(--teal));
+  padding: 1px;
+  background: linear-gradient(130deg, #32b3ad, #d63a8a, #32b3ad);
   background-size: 300% 300%;
-  animation: neonBorder 4s linear infinite;
-  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  animation: borderGlow 6s linear infinite;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-          mask-composite: exclude;
+  mask-composite: exclude;
 }
 
-@keyframes neonBorder {
+@keyframes borderGlow {
   0% { background-position: 0% 50%; }
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-.card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 0 40px rgba(214,58,138,0.4);
+/* ===== Text inside cards ===== */
+.card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 8px;
 }
 
-.card h3 { font-size: 1.3rem; margin-bottom: 8px; }
-.card p { font-size: 0.95rem; line-height: 1.5; opacity: 0.9; }
+.card p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
 
-.tags { margin-top: 12px; }
+.tags {
+  margin-top: 12px;
+}
+
 .tags span {
   display: inline-block;
   background: rgba(50,179,173,0.2);
@@ -152,6 +177,7 @@ body {
   margin: 3px;
 }
 
+/* ===== Buttons ===== */
 .btn {
   display: inline-block;
   margin-top: 16px;
@@ -164,9 +190,13 @@ body {
   box-shadow: 0 0 20px rgba(214,58,138,0.5);
   transition: all 0.3s ease;
 }
-.btn:hover { background: var(--teal); box-shadow: 0 0 25px rgba(50,179,173,0.7); }
 
-/* === Footer === */
+.btn:hover {
+  background: var(--teal);
+  box-shadow: 0 0 25px rgba(50,179,173,0.7);
+}
+
+/* ===== Footer ===== */
 footer {
   text-align: center;
   padding: 50px 20px;
@@ -197,9 +227,14 @@ footer {
   transition: all 0.3s ease;
   box-shadow: 0 0 20px rgba(50,179,173,0.5);
 }
-.footer-btn:hover { background: var(--magenta); box-shadow: 0 0 30px rgba(214,58,138,0.7); transform: translateY(-3px); }
 
-/* === Social Icons === */
+.footer-btn:hover {
+  background: var(--magenta);
+  box-shadow: 0 0 30px rgba(214,58,138,0.7);
+  transform: translateY(-3px);
+}
+
+/* ===== Social Icons ===== */
 .social {
   display: flex;
   justify-content: center;
@@ -218,16 +253,24 @@ footer {
   text-shadow: 0 0 20px var(--magenta);
 }
 
-/* === Fade-in Effects === */
-.fade-section { opacity: 0; transform: translateY(50px); transition: opacity 1s ease, transform 1s ease; }
-.fade-section.visible { opacity: 1; transform: translateY(0); }
+/* ===== Fade-in ===== */
+.fade-section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1s ease, transform 1s ease;
+}
 
-/* Responsive */
+.fade-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
   .navbar { height: 55px; }
   .logo { font-size: 1rem; }
   .back-btn { padding: 6px 12px; font-size: 0.8rem; }
   .grid { padding: 20px; gap: 20px; }
   footer .footer-links { flex-direction: column; }
-  .social { flex-direction: row; gap: 25px; }
+  .social { gap: 25px; }
 }
