@@ -198,3 +198,73 @@ footer {
     padding: 12px 0;
   }
 }
+/* ===== FIX DEFINITIVO FOOTER (sotto la card, centrato) ===== */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 40px;
+  position: relative;
+  z-index: 5;
+}
+
+#portfolio-btn,
+#mute-btn {
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 220px;
+  text-align: center;
+  padding: 12px 28px;
+}
+
+#portfolio-btn {
+  background: var(--teal);
+  color: var(--white);
+  box-shadow: 0 0 20px rgba(50, 179, 173, 0.5);
+}
+
+#portfolio-btn:hover {
+  background: var(--magenta);
+  box-shadow: 0 0 30px rgba(214, 58, 138, 0.7);
+  transform: translateY(-3px);
+}
+
+#mute-btn {
+  background: var(--magenta);
+  color: var(--white);
+  box-shadow: 0 0 20px rgba(214, 58, 138, 0.5);
+}
+
+#mute-btn:hover {
+  background: var(--teal);
+  box-shadow: 0 0 28px rgba(50, 179, 173, 0.7);
+  transform: translateY(-3px);
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  footer {
+    margin-top: 30px;
+    gap: 16px;
+  }
+
+  #portfolio-btn,
+  #mute-btn {
+    width: 80%;
+    max-width: 280px;
+  }
+}
