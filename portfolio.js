@@ -40,3 +40,26 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 document.querySelectorAll('.fade-section').forEach(el => observer.observe(el));
+
+// ===== WhatsApp Link Handler (apre app su mobile o web su desktop) =====
+document.querySelector('.fa-whatsapp').parentElement.addEventListener('click', (e) => {
+  e.preventDefault();
+
+  const phone = "393534907105"; // ✅ numero corretto con prefisso Italia
+  const message = encodeURIComponent("Hi Iosif! I'm interested in your portfolio.");
+  const mobileURL = `whatsapp://send?phone=${phone}&text=${message}`;
+  const webURL = `https://web.whatsapp.com/send?phone=${phone}&text=${message}`;
+
+  // Se l’utente è su mobile → tenta apertura diretta app
+  if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+    window.location.href = mobileURL;
+    // fallback se non apre l’app entro 1.5 secondi
+    setTimeout(() => {
+      window.open(webURL, "_blank");
+    }, 1500);
+  } else {
+    // se è desktop → apre WhatsApp Web
+    window.open(webURL, "_blank");
+  }
+});
+
