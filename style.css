@@ -46,7 +46,7 @@ body {
 /* ===== Container ===== */
 .container {
   text-align: center;
-  padding: 50px;
+  padding: 50px 30px 70px 30px;
   border-radius: 20px;
   background: rgba(255, 255, 255, 0.06);
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
@@ -70,10 +70,11 @@ body {
 
 /* ===== Countdown ===== */
 .countdown {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
-  justify-content: center;
+  justify-items: center;
+  align-items: center;
   transform: translateZ(40px);
 }
 
@@ -117,21 +118,18 @@ body {
   pointer-events: none;
 }
 
-/* ===== Footer (mobile-perfect version) ===== */
+/* ===== Footer (ora parte della card) ===== */
 footer {
-  position: fixed;
-  bottom: 35px;
-  left: 0;
-  right: 0;
-  z-index: 2;
-  text-align: center;
+  position: relative;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+  z-index: 2;
+  opacity: 0;
   animation: footerFade 1.5s ease forwards;
   animation-delay: 1.2s;
-  opacity: 0;
 }
 
 @keyframes footerFade {
@@ -148,14 +146,13 @@ footer {
 /* ===== Buttons ===== */
 #portfolio-btn,
 #mute-btn {
-  transform: translateZ(40px);
   border-radius: 10px;
   font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
+  transform: translateZ(40px);
 }
 
-/* Portfolio button */
 #portfolio-btn {
   background: var(--teal);
   color: var(--white);
@@ -169,32 +166,42 @@ footer {
   transform: translateY(-3px);
 }
 
-/* Mute button */
 #mute-btn {
   background: var(--magenta);
   color: var(--white);
-  border: 0;
+  border: none;
   padding: 10px 20px;
   box-shadow: 0 0 20px rgba(214, 58, 138, 0.5);
 }
 #mute-btn:hover {
-  transform: translateY(-3px);
   background: var(--teal);
   box-shadow: 0 0 28px rgba(50, 179, 173, 0.7);
+  transform: translateY(-3px);
 }
 
 /* ===== Mobile fine-tuning ===== */
 @media (max-width: 600px) {
-  footer {
-    bottom: 10px; /* leggermente più spazio */
-    gap: 16px;
+  .container {
+    padding: 35px 20px 60px 20px;
   }
-  #portfolio-btn,
-  #mute-btn {
-    padding: 12px 26px;
+
+  .countdown {
+    grid-template-columns: repeat(2, 1fr); /* forzato per evitare 3+1 */
+    gap: 20px;
   }
+
   .time {
     min-width: 100px;
     font-size: 2rem;
+  }
+
+  footer {
+    margin-top: 35px;
+    gap: 14px;
+  }
+
+  #portfolio-btn,
+  #mute-btn {
+    padding: 12px 26px;
   }
 }
