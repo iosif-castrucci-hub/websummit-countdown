@@ -186,7 +186,7 @@ footer {
 /* ===== Mobile fine-tuning ===== */
 @media (max-width: 600px) {
   footer {
-    bottom: 45px; /* leggermente più spazio */
+    bottom: 90px; /* leggermente più spazio */
     gap: 16px;
   }
   #portfolio-btn,
