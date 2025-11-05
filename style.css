@@ -122,4 +122,39 @@ footer{ position:fixed; bottom:22px; left:0; right:0; z-index:2; text-align:cent
     padding: 12px 24px;
   }
 }
+/* --- Footer Fix + Fade-in Animation --- */
+footer {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 30px; /* sposta tutto più in basso */
+  z-index: 2;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px; /* distanza tra i due bottoni */
+  opacity: 0;
+  animation: footerFade 1.5s ease forwards;
+  animation-delay: 1.2s; /* parte dopo il countdown */
+}
+
+@keyframes footerFade {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Extra spazio su mobile */
+@media (max-width: 600px) {
+  footer {
+    bottom: 20px;
+    gap: 10px;
+  }
+}
 
