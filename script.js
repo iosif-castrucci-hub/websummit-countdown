@@ -101,3 +101,8 @@ const tris = Array.from({length:26}, ()=>new Tri());
   tris.forEach(t=>t.step());
   requestAnimationFrame(loop);
 })();
+/* ---------- PORTFOLIO BUTTON ---------- */
+const portfolioBtn = document.getElementById("portfolio-btn");
+portfolioBtn.addEventListener("click", () => {
+  window.open("https://github.com/tuo-username/portfolio", "_blank");
+});
