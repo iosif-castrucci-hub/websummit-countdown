@@ -103,6 +103,15 @@ const tris = Array.from({length:26}, ()=>new Tri());
 })();
 /* ---------- PORTFOLIO BUTTON ---------- */
 const portfolioBtn = document.getElementById("portfolio-btn");
-portfolioBtn.addEventListener("click", () => {
-  window.open("https://github.com/tuo-username/portfolio", "_blank");
-});
+
+if (portfolioBtn) {
+  portfolioBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    // Aggiunge una leggera transizione di uscita
+    document.body.style.transition = "opacity 0.4s ease";
+    document.body.style.opacity = "0";
+    setTimeout(() => {
+      window.location.href = "portfolio.html"; // apre nello stesso tab
+    }, 400);
+  });
+}
