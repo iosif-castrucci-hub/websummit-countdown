@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
 
-/* ====== Root Colors ====== */
 :root {
   --dark-navy: #0b0c28;
   --teal: #32b3ad;
@@ -8,7 +7,6 @@
   --white: #fff;
 }
 
-/* ====== Base Reset ====== */
 * {
   box-sizing: border-box;
 }
@@ -27,7 +25,7 @@ body {
   position: relative;
 }
 
-/* ====== Canvas Background ====== */
+/* ===== Canvas background ===== */
 #triangles {
   position: fixed;
   inset: 0;
@@ -36,7 +34,7 @@ body {
   height: 100%;
 }
 
-/* ====== 3D Perspective ====== */
+/* ===== 3D Scene ===== */
 .scene {
   position: relative;
   z-index: 1;
@@ -45,7 +43,7 @@ body {
   perspective: 1000px;
 }
 
-/* ====== Container ====== */
+/* ===== Container ===== */
 .container {
   text-align: center;
   padding: 50px;
@@ -58,7 +56,6 @@ body {
   outline: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* ====== Typography ====== */
 .title {
   font-size: 2.8rem;
   text-shadow: 0 4px 24px rgba(0, 0, 0, 0.55);
@@ -71,7 +68,7 @@ body {
   margin: 0 0 40px 0;
 }
 
-/* ====== Countdown ====== */
+/* ===== Countdown ===== */
 .countdown {
   display: flex;
   flex-wrap: wrap;
@@ -101,7 +98,7 @@ body {
   margin-top: 6px;
 }
 
-/* ====== Audio Overlay ====== */
+/* ===== Overlay audio ===== */
 #overlay {
   position: fixed;
   inset: 0;
@@ -115,31 +112,26 @@ body {
   cursor: pointer;
   transition: opacity 0.4s;
 }
-
 #overlay.hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-/* ====== Footer (Definitive Cross-Browser Version) ====== */
+/* ===== Footer (mobile-perfect version) ===== */
 footer {
   position: fixed;
+  bottom: 35px;
   left: 0;
   right: 0;
-  bottom: 0;
-  z-index: 5;
-  width: 100%;
+  z-index: 2;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding-bottom: 40px; /* spazio stabile dal bordo */
-  background: linear-gradient(to top, rgba(11, 12, 40, 0.9) 0%, transparent 90%);
-  backdrop-filter: blur(8px);
-  opacity: 0;
+  gap: 14px;
   animation: footerFade 1.5s ease forwards;
   animation-delay: 1.2s;
+  opacity: 0;
 }
 
 @keyframes footerFade {
@@ -153,7 +145,7 @@ footer {
   }
 }
 
-/* ====== Buttons ====== */
+/* ===== Buttons ===== */
 #portfolio-btn,
 #mute-btn {
   transform: translateZ(40px);
@@ -163,6 +155,7 @@ footer {
   transition: all 0.3s ease;
 }
 
+/* Portfolio button */
 #portfolio-btn {
   background: var(--teal);
   color: var(--white);
@@ -170,38 +163,36 @@ footer {
   padding: 10px 24px;
   box-shadow: 0 0 20px rgba(50, 179, 173, 0.5);
 }
-
 #portfolio-btn:hover {
   background: var(--magenta);
   box-shadow: 0 0 30px rgba(214, 58, 138, 0.7);
   transform: translateY(-3px);
 }
 
+/* Mute button */
 #mute-btn {
   background: var(--magenta);
   color: var(--white);
-  border: none;
+  border: 0;
   padding: 10px 20px;
   box-shadow: 0 0 20px rgba(214, 58, 138, 0.5);
 }
-
 #mute-btn:hover {
   transform: translateY(-3px);
   background: var(--teal);
   box-shadow: 0 0 28px rgba(50, 179, 173, 0.7);
 }
 
-/* ====== Mobile Fix ====== */
+/* ===== Mobile fine-tuning ===== */
 @media (max-width: 600px) {
   footer {
-    padding-bottom: 70px; /* extra margine per Safari e Firefox */
-    gap: 14px;
+    bottom: 45px; /* leggermente più spazio */
+    gap: 16px;
   }
-
-  .container {
-    padding: 35px 24px;
+  #portfolio-btn,
+  #mute-btn {
+    padding: 12px 26px;
   }
-
   .time {
     min-width: 100px;
     font-size: 2rem;
